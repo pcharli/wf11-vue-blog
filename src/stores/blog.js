@@ -4,11 +4,12 @@ import router from '@/router'
 export const useBlogStore = defineStore({
     id: 'blog',
     state: () => ({
-        user: {
+        userDev: {
             "_id": "10",
             "pseudo": "test",
             "role": "admin"
         },
+        user: {},
         urlApi: "https://ingrwf11-f226b-default-rtdb.europe-west1.firebasedatabase.app/",
         errorUser: false,
         posts: null
