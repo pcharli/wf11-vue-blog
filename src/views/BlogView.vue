@@ -20,7 +20,7 @@ const blogStore = useBlogStore()
 //secure
 const user = ref(blogStore.theUser)
 if(!user.value.pseudo) {
-  //router.push('/')
+  router.push('/')
 }
 blogStore.postsGet()
 
