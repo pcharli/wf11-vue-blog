@@ -11,14 +11,13 @@ import router from './router'
 
 const app = createApp(App)
 
-
 //filtres
 app.config.globalProperties.$filters = {
-  //formater une date dans la langue locale  
+  //formater une date dans la langue locale
   dateFr(value) {
-      return new Date(value).toLocaleDateString()
-    }
+    return new Date(value).toLocaleDateString()
   }
+}
 
 app.use(createPinia())
 app.use(router)

@@ -6,7 +6,7 @@
       <div class="field">
         <label for="" class="label">Pseudo</label>
         <div class="control">
-          <input type="text" class="input" v-model="pseudo">
+          <input type="text" class="input" v-model="pseudo" />
         </div>
       </div>
 
@@ -26,13 +26,11 @@ const blogStore = useBlogStore()
 
 const pseudo = ref('')
 
-const errorUser = computed( () => {
+const errorUser = computed(() => {
   return blogStore.theErrorUser
 })
 
-
 const identification = () => {
   blogStore.identUser(pseudo.value)
-  
 }
 </script>
