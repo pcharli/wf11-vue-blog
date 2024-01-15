@@ -28,6 +28,7 @@ const posts = computed(() => {
 })
 
 const addPost = (newPost) => {
+  newPost.comments = "null"
   blogStore.addPost(newPost)
 }
 </script>

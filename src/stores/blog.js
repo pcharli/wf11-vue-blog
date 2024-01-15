@@ -83,6 +83,9 @@ export const useBlogStore = defineStore({
     },
     addComment(newComment, post_id) {
       newComment.auteur = this.user._id
+      if(this.posts[post_id].comments == "null") {
+        this.posts[post_id].comments = []
+      }
       this.posts[post_id].comments.push({ ...newComment })
       this.updateApi()
     },

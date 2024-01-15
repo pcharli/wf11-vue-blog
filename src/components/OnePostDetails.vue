@@ -6,12 +6,13 @@
     <time datetime="" class="publish-date">Publié le {{ $filters.dateFr(post._created) }}</time>
   </article>
   <hr />
-  <h3>Commentaires :</h3>
-  <ul class="comments">
-    <li v-for="(comment, key) in post.comments" class="comments-item" :key="key">
-      {{ comment.label }} par 
-    </li>
-  </ul>
+  <div v-if="typeof(post.comments) == 'object' && post.comments.length > 0">
+    <h3>Commentaires :</h3>
+    <ul class="comments">
+        <ShowOneComment :comment="comment" v-for="(comment, key) in post.comments" :key="key"></ShowOneComment>
+    </ul>
+</div>
+  
   <hr />
   <h3>Commenter</h3>
   <form action="" @submit.prevent="addComment" class="add-comment">
@@ -34,6 +35,7 @@
 <script setup>
 import { useBlogStore } from '@/stores/blog.js'
 import { ref, computed } from 'vue'
+import ShowOneComment from '@/components/ShowOneComment.vue'
 const props = defineProps({
   post: {
     type: Object
@@ -52,7 +54,7 @@ const auteur = computed(() => {
 //add comment
 const newComment = ref({
   label: '',
-  _id: props.post.comments.length + 1
+  _id: (props.post.comments.length) ? props.post.comments.length + 1 : 0
 })
 const emit = defineEmits(['addcomment'])
 const addComment = () => {
