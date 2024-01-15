@@ -1,13 +1,18 @@
+<!-- utilisé pour afficher un comment et son auteur -->
 <template>
     <li  class="comments-item" >
-    {{ comment.label }} <span v-if="auteurC">par {{ auteurC.pseudo }}</span></li>
+    <!-- auteur est la computed -->
+    {{ comment.label }} <span v-if="auteur">par {{ auteur.pseudo }}</span></li>
 </template>
 <script setup>
+//import du store
 import { useBlogStore } from '@/stores/blog.js'
 import { computed } from 'vue'
+//activation du store
 const blogStore = useBlogStore()
 
-const auteurC = computed(() => {
+//recup de l'auteur du comment affiché
+const auteur = computed(() => {
     return blogStore.userById(props.comment.auteur)
 })
 const props = defineProps({

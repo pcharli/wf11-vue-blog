@@ -28,13 +28,15 @@ const props = defineProps({
     type: Number
   }
 })
-
+//définition d'un custom event "addPost"
 const emit = defineEmits(['addPost'])
 const newPost = ref({
   titre: '',
   contenu: ''
 })
 
+
+//quand form submit, on emet un event et on passe le nouvel article à le view
 const addPost = () => {
   emit('addPost', newPost.value)
 }

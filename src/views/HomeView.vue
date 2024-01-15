@@ -20,16 +20,17 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+//import du store
 import { useBlogStore } from '@/stores/blog.js'
-
+// activation du store
 const blogStore = useBlogStore()
 
 const pseudo = ref('')
-
+//ecoute de errorUser (pour affichage du message d'erreur)
 const errorUser = computed(() => {
   return blogStore.theErrorUser
 })
-
+//appel de l'action "identification" en passant le pseudo saisi
 const identification = () => {
   blogStore.identUser(pseudo.value)
 }

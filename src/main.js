@@ -11,7 +11,7 @@ import router from './router'
 
 const app = createApp(App)
 
-//filtres
+//définition des filtres
 app.config.globalProperties.$filters = {
   //formater une date dans la langue locale
   dateFr(value) {
