@@ -8,14 +8,9 @@
 <script setup>
 //import du store
 import { useBlogStore } from '@/stores/blog.js'
-import { computed } from 'vue'
+import {  computed } from 'vue'
 //activation du store
 const blogStore = useBlogStore()
-
-//recup de l'auteur du comment affiché
-const auteur = computed(() => {
-    return blogStore.userById(props.comment.auteur)
-})
 
 const props = defineProps({
   comment: {
@@ -25,6 +20,9 @@ const props = defineProps({
     type: Number
   }
 })
+
+//recup de l'auteur du comment affiché
+const auteur = blogStore.userById(props.comment.auteur)
 
 </script>
 <style>
