@@ -14,7 +14,7 @@ import { RouterLink, RouterView } from 'vue-router'
   </header>
 
   <section class="section">
-    <RouterView />
+    <RouterView key="base"/>
   </section>
 </template>
 
