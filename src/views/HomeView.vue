@@ -6,7 +6,7 @@
       <div class="field">
         <label for="" class="label">Pseudo</label>
         <div class="control">
-          <input type="text" class="input" v-model="pseudo" />
+          <input type="text" class="input" v-model.lazy="pseudo" />
         </div>
       </div>
 
@@ -24,7 +24,7 @@ import { ref, computed } from 'vue'
 import { useBlogStore } from '@/stores/blog.js'
 // activation du store
 const blogStore = useBlogStore()
-
+//recup de pseudo tapé dans l'input
 const pseudo = ref('')
 //ecoute de errorUser (pour affichage du message d'erreur)
 const errorUser = computed(() => {

@@ -10,11 +10,11 @@ export const useBlogStore = defineStore({
       role: 'admin'
     },
     user: {}, //user connecté
-    users: [], //liste des users
+    users: [], //liste des users pour afficher le nom des auteurs des articles et des commentaires
     //url de base de FireBase
     urlApi: 'https://ingrwf11-f226b-default-rtdb.europe-west1.firebasedatabase.app/',
     errorUser: false, //error si mauvais pseudo
-    posts: null //liste des articles
+    posts: [] //liste des articles
   }),
   getters: {
     //recup des data user connecté
@@ -29,13 +29,13 @@ export const useBlogStore = defineStore({
     allPosts: (state) => {
       return state.posts
     },
-    //recup d'un post sur son index array
+    //recup d'un post sur son index dans l'array posts
     onePost: (state) => {
       return (index) => state.posts[index]
     },
     //recup d'un user sur son _id
     userById: (state) => {
-      return (idP=0) => {
+      return (idP) => {
             let theAuteur = state.users.filter(user => user._id == idP)
             //console.log('store '+theAuteur[0].pseudo)
             return theAuteur[0]
@@ -105,7 +105,7 @@ export const useBlogStore = defineStore({
     updateApi() {
       fetch(this.urlApi + 'posts.json', {
         method: 'put',
-        body: JSON.stringify({ ...this.posts }),
+        body: JSON.stringify([ ...this.posts ]),
         headers: {
           'Content-type': 'application/json'
         }

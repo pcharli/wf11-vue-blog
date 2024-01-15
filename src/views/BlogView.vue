@@ -24,7 +24,7 @@ import AddPostForm from '@/components/AddPostForm.vue'
 //activation du store
 const blogStore = useBlogStore()
 
-//recupération d el'utilisateur connecté
+//recupération de l'utilisateur connecté
 const user = ref(blogStore.theUser)
 //redirection si pas de pseudo pour le user connecté
 if (!user.value.pseudo) {

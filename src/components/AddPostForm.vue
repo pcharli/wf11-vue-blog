@@ -20,22 +20,13 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-const props = defineProps({
-  post: {
-    type: Object
-  },
-  index: {
-    type: Number
-  }
-})
-//définition d'un custom event "addPost"
-const emit = defineEmits(['addPost'])
+
 const newPost = ref({
   titre: '',
   contenu: ''
 })
-
-
+//définition d'un custom event "addPost"
+const emit = defineEmits(['addPost'])
 //quand form submit, on emet un event et on passe le nouvel article à le view
 const addPost = () => {
   emit('addPost', newPost.value)

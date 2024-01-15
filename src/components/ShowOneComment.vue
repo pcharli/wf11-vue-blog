@@ -2,7 +2,8 @@
 <template>
     <li  class="comments-item" >
     <!-- auteur est la computed -->
-    {{ comment.label }} <span v-if="auteur">par {{ auteur.pseudo }}</span></li>
+      {{ comment.label }} <span v-if="auteur">par {{ auteur.pseudo }}</span>
+    </li>
 </template>
 <script setup>
 //import du store
@@ -15,6 +16,7 @@ const blogStore = useBlogStore()
 const auteur = computed(() => {
     return blogStore.userById(props.comment.auteur)
 })
+
 const props = defineProps({
   comment: {
     type: Object

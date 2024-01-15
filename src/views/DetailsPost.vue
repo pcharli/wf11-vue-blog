@@ -4,7 +4,6 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
 // appel des fonctions du router
 import { useRoute, useRouter } from 'vue-router'
 //intégration du store
@@ -23,12 +22,10 @@ const num_post = route.params.idpost
 const blogStore = useBlogStore()
 
 // recup des Articles
-blogStore.postsGet()
+//blogStore.postsGet()
 
-//recup de l'article en cours
-const thepost = computed(() => {
-  return blogStore.onePost(num_post) //getter avec attribut
-})
+//recup de l'article qui corresponde à l'id dans l'url
+const thepost = blogStore.onePost(num_post) //getter avec attribut
 
 //add comment en récup de commet et passant l'index du post
 const addComment = (newComment) => {
